@@ -7,7 +7,7 @@ SRC= $(wildcard $(SRC_DIR)/*.c)
 OBJ= $(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 BIN= $(BUILD_DIR)/ly
 
-CFLAGS= -std=c99 -pedantic -Wall -I $(INC_DIR)
+CFLAGS= -std=c99 -pedantic -Wall -I $(INC_DIR) -D_XOPEN_SOURCE=500
 LDFLAGS= -L/usr/lib/security -lform -lncurses -lpam -lpam_misc -lX11 -l:pam_loginuid.so
 
 all: $(BIN)

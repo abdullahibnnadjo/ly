@@ -1,5 +1,3 @@
-#define _XOPEN_SOURCE 500
-
 /* std lib */
 #include <string.h>
 #include <stdlib.h>
@@ -15,6 +13,9 @@
 #include <time.h>
 #include <unistd.h>
 
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 void kernel_log(int mode)
 {
 	pid_t pid;
@@ -106,6 +107,7 @@ void cascade(void)
 	getmaxyx(stdscr, rows, cols);
 	time(&time_rand);
 	srand((unsigned) time_rand);
+        struct timespec sleep_time;
 
 	for(frame_count = 0; frame_count < frame_target; ++frame_count)
 	{
@@ -145,7 +147,10 @@ void cascade(void)
 
 		if(time_frame < time_delta)
 		{
-			usleep((time_delta - time_frame) * 1000000);
+			const float s = time_delta - time_frame;
+			sleep_time.tv_sec = (int)s;
+			sleep_time.tv_nsec = (s - (float)sleep_time.tv_sec) * 1000000000;
+			nanosleep(&sleep_time, NULL);
 		}
 	}
 }
