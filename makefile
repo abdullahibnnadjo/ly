@@ -10,6 +10,12 @@ BIN= $(BUILD_DIR)/ly
 CFLAGS= -std=c99 -pedantic -Wall -I $(INC_DIR) -D_XOPEN_SOURCE=500
 LDFLAGS= -L/usr/lib/security -lform -lncurses -lpam -lpam_misc -lX11 -l:pam_loginuid.so
 
+ifeq ($(DEBUG),1)
+CFLAGS += -ggdb
+else
+CFLAGS  += -O2
+endif
+
 all: $(BIN)
 
 $(BIN): $(OBJ) | $(BUILD_DIR)
