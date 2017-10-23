@@ -20,6 +20,7 @@ distribution before going further:
 - xorg-xinit (required if you wish to use X)
 - xorg-xauth (required if you wish to use X)
 - mcookie (required if you wish to use X)
+- selinux-policy-devel (required if you wish to use X in a SELinux enforced environment like Fedora)
 
 You can now configure Ly by editing "src/config.h". Modify "ly.service"
 as well if you changed the default tty, then build the executable:
@@ -34,6 +35,12 @@ sudo build/ly
 Then, install Ly and the systemd service file:
 ```
 sudo make install
+```
+You may need to change `LDFLAGS_USR` and `INSTALL_USR` variables in the makefile to make it work for your system.
+
+For SELinux environments support, you should run instead:
+```
+sudo make install_selinux
 ```
 Now enable the systemd service to make it spawn on startup:
 ```

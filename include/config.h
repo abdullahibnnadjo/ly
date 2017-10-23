@@ -12,7 +12,7 @@
 #define LY_LIM_CMD 256
 
 /* behaviour */
-#define LY_CFG_SAVE "/etc/ly/ly.save"
+#define LY_CFG_SAVE "/var/lib/ly/ly.save"
 #define LY_CFG_READ_SAVE 1
 #define LY_CFG_WRITE_SAVE 1
 #define LY_CFG_CLR_USR 0
@@ -28,8 +28,8 @@
 #define LY_CMD_HALT "/sbin/shutdown"
 #define LY_CMD_XINITRC "~/.xinitrc"
 #define LY_CMD_MCOOKIE "/usr/bin/mcookie"
-#define LY_CMD_XSETUP "/etc/ly/xsetup.sh"
-#define LY_XAUTHORITY ".lyxauth"
+#define LY_CMD_XSETUP "/usr/share/ly/bin/xsetup.sh"
+#define LY_XAUTHORITY ".Xauthority"
 
 /* paths */
 #define LY_PATH "/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/env"

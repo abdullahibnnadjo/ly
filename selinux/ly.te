@@ -1,0 +1,18 @@
+policy_module(ly, 1.0)
+
+#gen_require(`
+#  type xdm_t, user_home_dir_t, xauth_home_t, admin_home_t;
+#')
+
+#filetrans_pattern(xdm_t, user_home_dir_t, xauth_home_t, file, ".lyxauth")
+#filetrans_pattern(xdm_t, admin_home_t, xauth_home_t, file, ".lyxauth")
+
+# For some reasons, even with thoses rules, the ".lyxauth" file is not created
+# with the correct label (xauth_home_t)
+#
+# Even if we change LY_XAUTHORITY to ".xauth", which has this rule in the ref policy,
+# (check that with `sesearch -T | grep xdm_t | grep xauth`) it's the same behavior
+#
+# The only working solution (not for root, why ?) for now is to use ".Xauthority" file name
+#
+# Disable this for now, uncomment to try and fix it

@@ -1,0 +1,6 @@
+#HOME_DIR/\.lyxauth	--	gen_context(unconfined_u:object_r:xauth_home_t,s0)
+#/root/\.lyxauth		--	gen_context(system_u:object_r:xauth_home_t,s0)
+#
+# See ly.te
+
+/usr/bin/ly		--	gen_context(system_u:object_r:xdm_exec_t,s0)
